@@ -1,0 +1,45 @@
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+export PATH=/opt/local/bin:/usr/local/bin:/usr/local/mongodb/bin:$PATH
+export PATH=/opt/local/lib/postgresql83/bin/:$PATH
+
+source ~/.gitcompletion
+
+export GIT_PS1_SHOWDIRTYSTATE=1
+export PS1='\[\e[1;37m\]\u@\h \[\e[0;31m\]\w\[\e[0m\]\[\e[32m\]$(__git_ps1 "[%s]")\[\e[0m\]$ '
+
+export EDITOR='vim'
+
+alias ss='script/server'
+alias ssd='script/server --debug'
+alias ssq='QUERY_TRACE=true script/server --debug'
+alias sc='script/console'
+alias sg='script/generate'
+alias ppr='touch tmp/restart.txt'
+alias logtail='tail -f log/*.log'
+alias l='ls -l'
+alias rss='rake superspec'
+alias rsm='rake supermigrate'
+
+export PROJDIR="$HOME/Projects"
+
+p() {
+  cd $PROJDIR/$1/
+}
+
+_projectcomplete() {
+  COMPREPLY=($(compgen -W '$(`which ls` $PROJDIR/)' -- ${COMP_WORDS[COMP_CWORD]}))
+  return 0
+}
+
+complete -o default -o nospace -F _projectcomplete p
+
+complete -C ~/.rakecomplete.rb -o default rake
+
+export PATH=/System/Library/Frameworks/JavaVM.framework//Versions/1.6/Commands/:$PATH
+
+function railsapp {
+  appname=$1
+  rails $appname -m http://github.com/unders/rails-1-2-3-launcher/raw/master/generate.rb $@
+}
+
+if [ -s ~/.rvm/scripts/rvm ] ; then source ~/.rvm/scripts/rvm ; fi
