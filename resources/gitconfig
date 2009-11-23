@@ -1,0 +1,19 @@
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+[alias]
+	ci = commit
+	s = status
+	rh = reset HEAD
+	d = diff
+	dc = diff --cached
+	aa = add -u .
+	ai = add -i
+	wipe = reset --hard HEAD
+	who-did-what = log --pretty=\"format:%an - %s\"
+	sync = !git pull && git push
+  automerge = !git config branch.master.remote origin && git config branch.master.merge refs/heads/master
+[branch]
+	autosetupmerge = true
+

@@ -1,0 +1,5 @@
+This is the installation procedure for new Elabs machines
+
+* Install Dropbox
+* Install all software in the /Applications directory of the Dropbox
+* Run the provisioning script install.sh

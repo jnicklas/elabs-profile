@@ -1,5 +1,6 @@
 #!/bin/bash
 
-sudo gem install sprinkle
-sudo sprinkle -s as_root.rb
-sprinkle -s as_user.rb
+./git.sh
+./rvm.sh
+./mvim.sh
+
